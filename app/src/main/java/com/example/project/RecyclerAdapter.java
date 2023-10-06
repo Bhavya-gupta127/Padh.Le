@@ -1,21 +1,14 @@
 package com.example.project;
 
-import static android.app.Activity.RESULT_OK;
-
 import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -24,12 +17,12 @@ import java.util.List;
 class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerAdapter";
-    List<Task> myList;
+    List<Task_Card> myList;
     ArrayList <String> type;
 
     private RecyclerViewClickListener listener;
 
-    public RecyclerAdapter(List<Task> myList, RecyclerViewClickListener listener) {
+    public RecyclerAdapter(List<Task_Card> myList, RecyclerViewClickListener listener) {
         this.myList = myList;
 
         this.listener = listener;

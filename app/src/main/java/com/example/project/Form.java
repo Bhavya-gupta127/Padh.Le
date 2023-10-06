@@ -44,8 +44,7 @@ public class Form extends AppCompatActivity {
     RadioGroup gender, activities, freetime, goout, health;
     Button Continue;
     String Gender, Age, Activities, FreeTime, GoOut, Health;
-//    String url = "https://studytime-padhle.herokuapp.com/predict";
-    String url = "https://sahilsorte16.pythonanywhere.com/predict";
+    String url = "https://category.pythonanywhere.com/predict";
     String result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,11 +74,7 @@ public class Form extends AppCompatActivity {
             GoOut = ((RadioButton) findViewById(goout.getCheckedRadioButtonId())).getContentDescription().toString();
             Health = ((RadioButton) findViewById(health.getCheckedRadioButtonId())).getContentDescription().toString();
             Predict();
-//            Toast.makeText(this, Gender + " " + Age + " " + Activities + " " + FreeTime + " " + GoOut + " " + Health, Toast.LENGTH_LONG).show();
-
         }
-
-
     }
 
     @Override
@@ -93,28 +88,12 @@ public class Form extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
+                            // created a JSON object of the response we got
                             JSONObject jsonObject = new JSONObject(response);
+                            // we stored the category we got into result
                             result = jsonObject.getString("category");
-                            String data;
-                            switch (result) {
-                                case "1":
-                                    data = "Less than 4 hours.";
-                                    break;
-                                case "2":
-                                    data = "Between 4 to 7 hours";
-                                    break;
-                                case "3":
-                                    data = "Between 7 to 12 hours";
-                                    break;
-                                case "4":
-                                    data = "More than 12 hours";
-                                    break;
-                                default:
-                                    data = "";
-                                    break;
-                            }
-
                             Log.d("TAG", "onCreate: ");
+                            // details is storing details of user from database
                             Map<String, Object> details = new HashMap<>();
                             details.put("Name", user.getDisplayName());
                             details.put("Email", user.getEmail());
@@ -134,7 +113,6 @@ public class Form extends AppCompatActivity {
                                             Log.w("Firestore", "Error writing document", e);
                                         }
                                     });
-//                            Toast.makeText(Form.this, data, Toast.LENGTH_SHORT).show();
                             Intent i=new Intent();
                             setResult(RESULT_OK, i);
                             finish();
@@ -147,7 +125,6 @@ public class Form extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-//                        Toast.makeText(Form.this, error.getMessage().toString(), Toast.LENGTH_LONG);
                     }
                 }) {
 

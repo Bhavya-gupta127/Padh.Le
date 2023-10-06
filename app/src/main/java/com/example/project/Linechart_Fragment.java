@@ -63,12 +63,6 @@ public class Linechart_Fragment extends Fragment {
 
         ArrayList <String> xLabels = new ArrayList<>();
 
-//        xLabels.add("Mon");
-//        xLabels.add("Tue");
-//        xLabels.add("Wed");
-//        xLabels.add("Thur");
-//        xLabels.add("Fri");
-//        xLabels.add("Sat");
         xLabels.add(String.valueOf(date.getDayOfMonth()-6));
         xLabels.add(String.valueOf(date.getDayOfMonth()-5));
         xLabels.add(String.valueOf(date.getDayOfMonth()-4));
@@ -86,15 +80,6 @@ public class Linechart_Fragment extends Fragment {
             }
         });
 
-        //lineChart.getAxisLeft().setAxisMinimum(-2);
-
-//
-//        lineEntry.add(new Entry(0, 0));
-//        lineEntry.add(new Entry(1, 0));
-//        lineEntry.add(new Entry(2, 0));
-//        lineEntry.add(new Entry(3, 0));
-//        lineEntry.add(new Entry(4, 0));
-//        lineEntry.add(new Entry(5, 0));
         db.collection("users").document(user.getUid()).collection("Completed").document(date.minus(Period.ofDays(6)).toString()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull com.google.android.gms.tasks.Task<DocumentSnapshot> task) {
@@ -176,14 +161,10 @@ public class Linechart_Fragment extends Fragment {
                             lineEntry.add(new Entry(5, 0));
                         }
 
-
             db.collection("users").document(user.getUid()).collection("Completed").document(date.toString()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull com.google.android.gms.tasks.Task<DocumentSnapshot> task) {
                     if (task.isSuccessful()) {
-
-
-                        //
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
                             LineHelper lh = document.toObject(LineHelper.class);
@@ -192,7 +173,8 @@ public class Linechart_Fragment extends Fragment {
                             Log.d("date", "Document does not exist!");
                             lineEntry.add(new Entry(6, 0));
                         }
-                        //
+
+                        // now plotting the values we got above in the lineEntry ArrayList
                         LineDataSet lds = new LineDataSet(lineEntry, "");
                         Description desc = new Description();
                         desc.setText("");
@@ -222,8 +204,6 @@ public class Linechart_Fragment extends Fragment {
                         YAxis yAxis = lineChart.getAxisLeft();
                         lineChart.setPinchZoom(true);
                         lineChart.invalidate();
-
-
                     } else {
                         Log.d("date", "Failed with: ", task.getException());
                     }

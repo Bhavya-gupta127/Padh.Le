@@ -2,7 +2,6 @@ package com.example.project;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,16 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
-
-import java.util.HashMap;
-import java.util.Map;
-
-public class MainActivity2 extends AppCompatActivity {
+public class AddTask_Activity extends AppCompatActivity {
 
     EditText text;
     Button save;
@@ -30,8 +20,6 @@ public class MainActivity2 extends AppCompatActivity {
     private RadioButton b3;
     private RadioButton b4;
 
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,15 +66,13 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 String name=text.getText().toString();
                 if(name.equals(""))
-                    Toast.makeText(MainActivity2.this, "Please Enter a Task Name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddTask_Activity.this, "Please Enter a Task Name", Toast.LENGTH_SHORT).show();
                 else if(id==-1)
-                    Toast.makeText(MainActivity2.this, "Please select How Big the Task is", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddTask_Activity.this, "Please select How Big the Task is", Toast.LENGTH_SHORT).show();
                 else {
                     Intent resultIntent = new Intent();
                     resultIntent.putExtra("a", name);
                     resultIntent.putExtra("b", id);
-
-
                     setResult(RESULT_OK, resultIntent);
                     finish();
                 }

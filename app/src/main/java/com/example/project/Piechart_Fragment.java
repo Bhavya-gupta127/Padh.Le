@@ -8,7 +8,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,9 +41,7 @@ public class Piechart_Fragment extends Fragment {
     ArrayList <Integer> clr = new ArrayList<>();
     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    String a;
 
-    long b;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,11 +57,9 @@ public class Piechart_Fragment extends Fragment {
                         if (task.isSuccessful()) {
                             Map<String, Long> map_pc = new HashMap<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Task tt=document.toObject(Task.class);
-//                                Log.d("bhavya", String.valueOf(tt.getTime()));
-                                if(tt.getTime()!=0 &&tt.getDate().equals(LocalDate.now().toString()))
+                                Task_Card tt=document.toObject(Task_Card.class);
+                                if(tt.getTime()!=0 && tt.getDate().equals(LocalDate.now().toString()))
                                     map_pc.put(tt.getName(), tt.getTime());
-
                             }
                             pieChart = view.findViewById(R.id.pieChart);
                             ArrayList<PieEntry> pieEntries =new ArrayList<>();
@@ -78,7 +73,6 @@ public class Piechart_Fragment extends Fragment {
                         }
                     }
                 });
-
         return view;
     }
 
@@ -89,42 +83,19 @@ public class Piechart_Fragment extends Fragment {
         clr.add(Color.parseColor("#EE82EE"));
     }
 
-//    private ArrayList<PieEntry> getPieData(){
-//        ArrayList<PieEntry> pieEntries =
-
-
-
-//        Log.d("map",map_pc.toString());
-//        map_pc.put("Reading", 100);
-//        map_pc.put("Probability", 50);
-//
-//        for(String entry : map_pc.keySet()){
-//            PieEntry pieEntry = new PieEntry(map_pc.get(entry).floatValue(), entry);
-//            pieEntries.add(pieEntry);
-//        }
-//
-//        return pieEntries;
-//    }
-
     private void drawPC( ArrayList<PieEntry> pieEntries) {
-//        pieChart = view.findViewById(R.id.pieChart);
-//        ArrayList<PieEntry> pieEntries = getPieData();
-
         Description desc = new Description();
         desc.setTextSize(10);
         desc.setText("Each task's contribution to total");
         pieChart.setDescription(desc);
 
-
         pieChart.getRenderer().getPaintRender().setShadowLayer(20f, 0f, 0f, Color.parseColor("#000000"));
         pieChart.setExtraOffsets(35f, 35f, 35f, 35f);
         PieDataSet pds = new PieDataSet(pieEntries, "");
 
-
         pds.setColors(clr);
         pds.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
         pds.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);;
-
 
         pieChart.setEntryLabelTypeface(Typeface.DEFAULT_BOLD);
         pieChart.setEntryLabelColor(Color.BLACK);
@@ -146,11 +117,8 @@ public class Piechart_Fragment extends Fragment {
         pieChart.setCenterText("Task\nShare");
         pieChart.setCenterTextSize(15f);
 
-
         pieChart.setDrawEntryLabels(true);
         pieChart.setTransparentCircleRadius(0f);
-        //pieChart.setHoleRadius(0f);
         pieChart.animateXY(2000, 2000, Easing.EaseOutBack);
-
     }
 }

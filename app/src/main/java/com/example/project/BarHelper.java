@@ -1,5 +1,6 @@
 package com.example.project;
 
+// this class stores the information regarding the Tasks done on the present day (helps on forming the BarChart)
 public class BarHelper {
     int easy=0;
     int medium=0;
@@ -12,9 +13,7 @@ public class BarHelper {
         this.medium=medium;
         this.big=big;
         this.v_big=v_big;
-
     }
-
 
     public int getEasy() {
         return easy;

@@ -14,12 +14,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+// there are 3 Charts to statistically depict the Progress in Tasks of a User
+// LineChart: Shows the number of Tasks that user Completed on each day of the previous week
+// BarChart: Shows the number of Tasks of each difficulty, which were added and completed on the Present Day
+// PieChart: Shows the total % of time spent on each Task on the Present Day
 
-public class ThirdFragment extends Fragment {
+public class Charts_Fragment extends Fragment {
 
     private Button lineButton, pieButton, barButton;
 
-    public ThirdFragment(){
+    public Charts_Fragment(){
         // require a empty public constructor
     }
 
@@ -60,29 +64,6 @@ public class ThirdFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-//        lineButton = getActivity().findViewById(R.id.lineButton);
-//        pieButton = getActivity().findViewById(R.id.pieButton);
-//        barButton = getActivity().findViewById(R.id.barButton);
-//
-//        replaceFragment(new Linechart_Fragment());
-//        lineButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                replaceFragment(new Linechart_Fragment());
-//            }
-//        });
-//        barButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                replaceFragment(new Barchart_Fragment());
-//            }
-//        });
-//        pieButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                replaceFragment(new Piechart_Fragment());
-//            }
-//        });
     }
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();

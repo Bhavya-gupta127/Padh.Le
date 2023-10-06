@@ -1,17 +1,16 @@
 package com.example.project;
 
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-
-public class Task {
-    String name;
-    int id;
-    long time;
-    String sTime;
+// this class stores all the Details regaring the Task being added by the user
+public class Task_Card {
+    String name; // name of the task
+    int id; // this stores the category of the Task
+    long time; // the time for which that task has been done
+    String sTime; // time in String/Time format
     long Ptime;
-    boolean completed;
-    String uId;
+    boolean completed; // tracks the completed status of the task
+    String uId; // this stores the UID of the Taks document in which it is stored in the Firestore
     String session;
-    String date;
+    String date; // date of task creation
 
     public String getDate() {
         return date;
@@ -29,7 +28,6 @@ public class Task {
         this.session = session;
     }
 
-
     public String getuId() {
         return uId;
     }
@@ -41,23 +39,22 @@ public class Task {
     public boolean isCompleted() {
         return completed;
     }
-    public Task(){}
-    Task(String name, int id, int time, String sTime) {
+    public Task_Card(){}
+    Task_Card(String name, int id, int time, String sTime) {
         this.name = name;
         this.id = id;
         this.time = time;
         this.sTime = sTime;
     }
-   Task(String name, int id, int time,String sTime,boolean completed,String uId){
+   Task_Card(String name, int id, int time, String sTime, boolean completed, String uId){
         this.name=name;
         this.id=id;
         this.time=time;
         this.sTime=sTime;
         this.completed=completed;
         this.uId=uId;
-
     }
-    Task(String name, int id, int time,String sTime,boolean completed,String uId,String date){
+    Task_Card(String name, int id, int time, String sTime, boolean completed, String uId, String date){
         this.name=name;
         this.id=id;
         this.time=time;
@@ -65,14 +62,12 @@ public class Task {
         this.completed=completed;
         this.uId=uId;
         this.date=date;
-
     }
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
 
     String sPTime;
-
 
     public String getName() {
         return name;
@@ -122,13 +117,10 @@ public class Task {
         this.sPTime = sPTime;
     }
 
-    Task(String name, int id){
+    Task_Card(String name, int id){
         this.name=name;
         this.id=id;
         time=0;
         sTime="00:00:00";
     }
-
-
-
 }

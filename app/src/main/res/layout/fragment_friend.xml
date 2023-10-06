@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    tools:context=".FragmentFriend">
+    tools:context=".SessionFriend_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -26,29 +26,30 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
         android:text="Tasks"
         android:textColor="@color/black"
         android:textSize="15sp"
-        android:layout_marginLeft="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintHorizontal_bias="0.018"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.228" />
+        app:layout_constraintVertical_bias="0.167" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/friendsTask"
-        android:layout_width="match_parent"
-        android:layout_height="480dp"
+        android:layout_width="392dp"
+        android:layout_height="692dp"
         android:layout_marginHorizontal="5dp"
         android:clickable="false"
         android:longClickable="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.750" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView4"

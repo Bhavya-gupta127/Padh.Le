@@ -1,11 +1,10 @@
 package com.example.project;
 
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-
-public class DetailCard {
-    String Name;
+// stores the details of the user
+public class Detail_Card {
+    String Name; // name of the User
     String Email;
-    String Uid;
+    String Uid; // Unique ID of the user (helps to uniquely recoganize a user among all) {its auto generated}
     String Category;
 
     public String getCategory() {
@@ -40,13 +39,13 @@ public class DetailCard {
         Uid = uid;
     }
 
-    public DetailCard(){}
-    DetailCard(String name, String email,String uid) {
+    public Detail_Card(){}
+    Detail_Card(String name, String email, String uid) {
         this.Name = name;
         this.Email = email;
         this.Uid=uid;
     }
-    DetailCard(String name, String email,String uid,String category) {
+    Detail_Card(String name, String email, String uid, String category) {
         this.Name = name;
         this.Email = email;
         this.Uid=uid;

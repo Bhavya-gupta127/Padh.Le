@@ -7,7 +7,4 @@ public class LineHelper {
         return completedTasks;
     }
 
-    public void setCompletedTasks(int completedTasks) {
-        this.completedTasks = completedTasks;
-    }
 }

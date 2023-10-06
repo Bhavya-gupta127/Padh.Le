@@ -17,12 +17,12 @@ import java.util.List;
 class RecyclerAdapter3 extends RecyclerView.Adapter<RecyclerAdapter3.ViewHolder> {
 
     private static final String TAG = "RecyclerAdapter3";
-    List<Task> myList;
+    List<Task_Card> myList;
     ArrayList <String> type;
 
     private RecyclerViewClickListener listener;
 
-    public RecyclerAdapter3(List<Task> myList, RecyclerViewClickListener listener) {
+    public RecyclerAdapter3(List<Task_Card> myList, RecyclerViewClickListener listener) {
         this.myList = myList;
 
         this.listener = listener;

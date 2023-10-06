@@ -36,6 +36,6 @@ public class SplashScreen extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, Splash_timeout);   //5 seconds
+        }, Splash_timeout);   // MainActivity is called after 5 seconds
     }
 }

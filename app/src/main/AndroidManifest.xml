@@ -43,18 +43,18 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity3"
+            android:name=".Stopwatch_Activity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".AddTask_Activity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:exported="false"
             android:screenOrientation="portrait">
-
+;
         </activity>
     </application>
 

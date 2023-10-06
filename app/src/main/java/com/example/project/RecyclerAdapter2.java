@@ -7,18 +7,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 public class RecyclerAdapter2 extends RecyclerView.Adapter<RecyclerAdapter2.ViewHolder>{
     private static final String TAG = "RecyclerAdapter2";
-    List<DetailCard> myList;
+    List<Detail_Card> myList;
 
     private RecyclerViewClickListener listener;
 
-    public RecyclerAdapter2(List<DetailCard> myList, RecyclerViewClickListener listener) {
+    public RecyclerAdapter2(List<Detail_Card> myList, RecyclerViewClickListener listener) {
         this.myList = myList;
 
         this.listener = listener;

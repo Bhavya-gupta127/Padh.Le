@@ -6,22 +6,21 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity3 extends AppCompatActivity {
+// this activity displays the Stopwatch for each Task
+public class Stopwatch_Activity extends AppCompatActivity {
     private Chronometer chronometer;
     ImageButton btStart, btStop, button;
     private boolean isResume,isRunning,flg=false;
     Handler handler,handler2;
-    long tMilliSec, tStart, tBuff, tUpdate = 0L;
+    long tUpdate = 0L;
     long sec=0, hrs=0, min=0, prev=0;
     int pos=0;
     String uId;
@@ -29,7 +28,6 @@ public class MainActivity3 extends AppCompatActivity {
     int i = 0;
     String sTime;
     long k,j=0;
-    boolean flag=true;
     boolean start_flag=false, five_flag=false, Mstart_flag=false;
     TextView display_title;
     String title;
@@ -42,8 +40,6 @@ public class MainActivity3 extends AppCompatActivity {
         setContentView(R.layout.activity_main3);
 
         display_title = findViewById(R.id.display_title);
-
-       // progressBar = findViewById(R.id.progress_bar);
         chronometer = findViewById(R.id.chronometer);
         btStart = findViewById(R.id.bt_start);
         btStop = findViewById(R.id.bt_stop);
@@ -66,13 +62,9 @@ public class MainActivity3 extends AppCompatActivity {
             sec =  (prev / 1000);
             hrs = hrs+(sec / 3600);
             min = (min+(sec / 60))%60;
-
-
             sec = sec % 60;
-//            tUpdate+=sec;
 
             sTime=String.format("%02d", hrs) + ":" + String.format("%02d", min) + ":" + String.format("%02d", sec);
-//            sec=min=hrs=0;
             chronometer.setText(sTime);
         }
 
@@ -91,15 +83,13 @@ public class MainActivity3 extends AppCompatActivity {
             }
         });
 
-//-------------------------------------------------------------------------------------------------
         btStart.setOnClickListener(new View.OnClickListener() {
             boolean temp = true;
             @Override
             public void onClick(View v) {
                 Mstart_flag=true;
-                //-----------------------------------------------------------------------
-                if (!isResume) {
 
+                if (!isResume) {
                     isResume = true;
                     isRunning=true;
                     start_flag=true;
@@ -107,7 +97,6 @@ public class MainActivity3 extends AppCompatActivity {
                     btStop.setVisibility(View.GONE);
                     btStart.setImageDrawable(getResources().getDrawable(R.drawable.ic_baseline_pause_24));
                 } else {
-
                     isRunning=false;
                     isResume = false;
                     start_flag=false;
@@ -117,9 +106,6 @@ public class MainActivity3 extends AppCompatActivity {
                 }
             }
         });
-//---------------------------------------------------------------------------------------------------------
-
-
 
         btStop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +114,7 @@ public class MainActivity3 extends AppCompatActivity {
             }
         });
     }
-    //-----------------------------------------------------------------------------------------------------
+
     public Runnable runnable = new Runnable() {
         @Override
         public void run() {
@@ -142,12 +128,9 @@ public class MainActivity3 extends AppCompatActivity {
 
             if(flg){
                 tUpdate+=sec;
-
                 flg=false;
             }
-
-                sec = tUpdate % 60;
-
+            sec = tUpdate % 60;
 
             sTime = String.format("%02d", (hrs+temp2)%60) + ":" + String.format("%02d", (min+temp)%60) + ":" + String.format("%02d", sec);
             chronometer.setText(sTime);
@@ -169,7 +152,6 @@ public class MainActivity3 extends AppCompatActivity {
         if(!isResume){
             if(Mstart_flag) {
                 k = (tUpdate * 1000) + (j * 300000) + prev - prev % 60000;
-//                    time=String.valueOf(k );
                 intent.putExtra("position", pos);
                 intent.putExtra("uId", uId);
                 intent.putExtra("time", k);
@@ -177,7 +159,6 @@ public class MainActivity3 extends AppCompatActivity {
             }
             else if(five_flag){
                 k = (tUpdate * 1000) + (j * 300000) + prev;
-//                    time=String.valueOf(k );
                 intent.putExtra("position", pos);
                 intent.putExtra("uId", uId);
                 intent.putExtra("time", k);
